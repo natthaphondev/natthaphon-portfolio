@@ -1,0 +1,7 @@
+{
+  "name": "natthaphon-portfolio",
+  "version": 2,
+  "buildCommand": "echo 'Static site'",
+  "outputDirectory": ".",
+  "framework": "html"
+}

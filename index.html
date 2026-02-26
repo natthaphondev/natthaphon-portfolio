@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natthaphon Khaokaeo - Full Stack Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+
+        /* Container Layout */
+        .container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            min-height: 100vh;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: #1e293b;
+            padding: 40px 30px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 12px;
+            object-fit: cover;
+            margin-bottom: 25px;
+            border: 3px solid #0ea5e9;
+        }
+
+        .sidebar h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+
+        .sidebar-section h3 {
+            background-color: #334155;
+            padding: 10px 15px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #cbd5e1;
+        }
+
+        .contact-info {
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .contact-info p {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .contact-info strong {
+            color: #0ea5e9;
+            display: block;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background-color: #334155;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            margin-bottom: 8px;
+            margin-right: 8px;
+            border-left: 3px solid #0ea5e9;
+        }
+
+        /* Main Content */
+        .main {
+            padding: 60px 50px;
+            overflow-y: auto;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #fff;
+            border-bottom: 3px solid #0ea5e9;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .hero {
+            margin-bottom: 50px;
+        }
+
+        .hero h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            color: #0ea5e9;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: #cbd5e1;
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        .about-box {
+            background-color: #1e293b;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #0ea5e9;
+            margin-bottom: 15px;
+        }
+
+        .objective {
+            background-color: #1e293b;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #10b981;
+        }
+
+        .experience-item {
+            background-color: #1e293b;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #0ea5e9;
+        }
+
+        .experience-item h4 {
+            color: #0ea5e9;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .experience-item .company {
+            color: #10b981;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .experience-item .date {
+            color: #94a3b8;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .experience-item ul {
+            margin-left: 20px;
+            font-size: 14px;
+        }
+
+        .experience-item li {
+            margin-bottom: 8px;
+        }
+
+        .education-item {
+            background-color: #1e293b;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #8b5cf6;
+        }
+
+        .education-item h4 {
+            color: #8b5cf6;
+            margin-bottom: 5px;
+        }
+
+        .education-item .school {
+            color: #cbd5e1;
+            margin-bottom: 3px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                height: auto;
+                position: relative;
+                border-bottom: 3px solid #0ea5e9;
+                padding: 30px 20px;
+            }
+
+            .main {
+                padding: 40px 20px;
+            }
+
+            .hero h2 {
+                font-size: 28px;
+            }
+
+            .section-title {
+                font-size: 22px;
+            }
+        }
+
+        /* Dark mode toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #0ea5e9;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            color: #fff;
+            font-size: 14px;
+            z-index: 100;
+        }
+
+        .theme-toggle:hover {
+            background-color: #0284c7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <img src="https://via.placeholder.com/200/1e293b/0ea5e9?text=Natthaphon" alt="Profile" class="profile-photo">
+            
+            <h1>NATTHAPHON<br>KHAOKAEO</h1>
+
+            <div class="sidebar-section">
+                <h3>Contact</h3>
+                <div class="contact-info">
+                    <p><strong>Email:</strong> natthaphon.khaokao@gmail.com</p>
+                    <p><strong>Phone:</strong> 065-1065903</p>
+                    <p><strong>Address:</strong> 305 Soi Settisart Rama, Haul Khwaeng District, Bangkok 10310</p>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Technical Skills</h3>
+                <div>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">TypeScript</span>
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Next.js</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Express</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">REST API</span>
+                    <span class="skill-tag">GraphQL</span>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Education</h3>
+                <div class="education-item">
+                    <h4>B.Sc Computer Science</h4>
+                    <p class="school">Rajamangala University of Technology</p>
+                    <p class="school">Isan Saun Campus</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Hero Section -->
+            <section class="hero">
+                <h2>Full Stack Developer</h2>
+                <p>Experienced software developer with strong interest in technology and software development. Specialize in backend and frontend development, with experience in a variety of programming languages, frameworks, and server environments.</p>
+            </section>
+
+            <!-- About Section -->
+            <section class="section">
+                <h3 class="section-title">About Me</h3>
+                <div class="about-box">
+                    <p>Able to work under pressure and flexible with time. Strong team player with excellent problem-solving skills. Passionate about learning new technologies and developing quality software solutions.</p>
+                </div>
+            </section>
+
+            <!-- Objective Section -->
+            <section class="section">
+                <h3 class="section-title">Objective</h3>
+                <div class="objective">
+                    <p>Seeking opportunities to leverage my full-stack development skills and experience in building scalable web applications. Committed to continuous learning and contributing to innovative technology projects.</p>
+                </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section class="section">
+                <h3 class="section-title">Experience</h3>
+                
+                <div class="experience-item">
+                    <h4>Full Stack Developer</h4>
+                    <p class="company">DIGIT SOUL Co., Ltd.</p>
+                    <p class="date">June 2021 - Present</p>
+                    <ul>
+                        <li>Developed smart contracts and decentralized applications (dApps)</li>
+                        <li>Collaborated with team to integrate blockchain APIs for backend services</li>
+                        <li>Implemented CI/CD pipelines using GitLab/GitHub Actions</li>
+                        <li>Stayed current with blockchain technology trends and updates</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h4>Frontend Developer</h4>
+                    <p class="company">Miniwi Online Co., Ltd.</p>
+                    <p class="date">April 2020 - 2021</p>
+                    <ul>
+                        <li>Built responsive user interfaces for gaming platforms</li>
+                        <li>Enhanced backend integration with optimized streaming systems</li>
+                        <li>Developed and improved user authentication systems</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h4>Trainer & QA Tester</h4>
+                    <p class="company">Ready Planet Co., Ltd.</p>
+                    <p class="date">November 2018 - March 2019</p>
+                    <ul>
+                        <li>Created test cases and executed test scenarios</li>
+                        <li>Reported errors and generated test reports</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Certificates -->
+            <section class="section">
+                <h3 class="section-title">Certificates</h3>
+                <div class="experience-item">
+                    <p><strong>Oracle Academy:</strong> Oracle Database 1g & 2i</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <button class="theme-toggle">🌙 Dark Mode</button>
+
+    <script>
+        // Simple theme toggle
+        const toggleBtn = document.querySelector('.theme-toggle');
+        const isDark = localStorage.getItem('dark-mode') !== 'false';
+        
+        if (isDark) {
+            document.body.style.colorScheme = 'dark';
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            const currentDark = localStorage.getItem('dark-mode') !== 'false';
+            localStorage.setItem('dark-mode', !currentDark);
+            location.reload();
+        });
+    </script>
+</body>
+</html>
